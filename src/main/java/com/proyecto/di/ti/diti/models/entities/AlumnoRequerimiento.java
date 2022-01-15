@@ -1,11 +1,13 @@
 package com.proyecto.di.ti.diti.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import static javax.persistence.TemporalType.TIMESTAMP;
 
@@ -13,7 +15,6 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "ALUMNO_REQUERIMIENTO")
 public class AlumnoRequerimiento extends BaseEntity implements Serializable {
@@ -36,5 +37,8 @@ public class AlumnoRequerimiento extends BaseEntity implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS", locale = "es_PE", timezone = "America/Lima")
     @Column(name = "FECHA_NACIMIENTO") private Date fechaNacimiento;
 
+    @OneToMany(mappedBy = "alumnoRequerimiento", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<RegistroServicioRequerimiento> registroServicioRequerimientos;
 
 }
