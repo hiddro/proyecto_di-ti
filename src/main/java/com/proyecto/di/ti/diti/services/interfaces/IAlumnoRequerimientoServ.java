@@ -10,4 +10,6 @@ public interface IAlumnoRequerimientoServ {
     AlumnoReqDto saveALumno(AlumnoReqDto alumnoRequerimiento);
 
     List<AlumnoRequerimiento> listAlumno();
+
+    AlumnoRequerimiento getAlumno(Integer id);
 }

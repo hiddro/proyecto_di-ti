@@ -48,4 +48,10 @@ public class AlumnoRequerimientoServ implements IAlumnoRequerimientoServ {
     public List<AlumnoRequerimiento> listAlumno() {
         return iAlumnoRequerimientoRepo.findAll();
     }
+
+    @Override
+    public AlumnoRequerimiento getAlumno(Integer id) {
+        Optional<AlumnoRequerimiento> alum = Optional.ofNullable(iAlumnoRequerimientoRepo.findById(id)).orElse(Optional.empty());
+        return alum.get();
+    }
 }

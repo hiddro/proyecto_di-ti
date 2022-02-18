@@ -19,6 +19,22 @@ public class AlumnoRequerimientoCont {
     @Autowired
     private IAlumnoRequerimientoServ iAlumnoRequerimientoServ;
 
+    @GetMapping(value = "/get/{id}")
+    public ResponseEntity<AlumnoRequerimiento> getAlumno(@PathVariable("id") Integer id){
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            AlumnoRequerimiento alumno = iAlumnoRequerimientoServ.getAlumno(id);
+            response.put("mensaje", "Se Obtuvo al Alumno");
+            response.put("alumno", alumno);
+        }catch (Exception ex){
+            response.put("error", ex);
+            return new ResponseEntity(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity(response, HttpStatus.OK);
+    }
+
     @GetMapping(value = "/listado", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<AlumnoRequerimiento>> listadoAlumno(){
         Map<String, Object> response = new HashMap<>();
