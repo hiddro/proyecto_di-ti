@@ -16,8 +16,7 @@ import java.io.Serializable;
 @Table(name = "REGISTRO_SERVICIO_REQUERIMIENTO")
 public class RegistroServicioRequerimiento extends BaseEntity implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ID_REGISTRO_SERVICIO")
-    @SequenceGenerator(name = "SEQ_ID_REGISTRO_SERVICIO", sequenceName = "SEQ_ID_REGISTRO_SERVICIO", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ID_REGISTRO_SERVICIO") Integer idRegistroServicio;
 

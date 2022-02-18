@@ -19,8 +19,7 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 @Table(name = "SERVICIO_REQUERIMIENTO")
 public class ServicioRequerimiento extends BaseEntity implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ID_SERVICIO_REQUERIMIENTO")
-    @SequenceGenerator(name = "SEQ_ID_SERVICIO_REQUERIMIENTO", sequenceName = "SEQ_ID_SERVICIO_REQUERIMIENTO", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ID_SERVICIO_REQUERIMIENTO") Integer idServicioRequerimiento;
 

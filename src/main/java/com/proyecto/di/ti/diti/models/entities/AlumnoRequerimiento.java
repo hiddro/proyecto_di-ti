@@ -16,11 +16,11 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name = "ALUMNO_REQUERIMIENTO")
-public class AlumnoRequerimiento extends BaseEntity implements Serializable {
+public class AlumnoRequerimiento implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_ID_ALUMNO_REQUERIMIENTO")
-    @SequenceGenerator(name = "SEQ_ID_ALUMNO_REQUERIMIENTO", sequenceName = "SEQ_ID_ALUMNO_REQUERIMIENTO", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ID_ALUMNO_REQUERIMIENTO") Integer idAlumnoRequerimiento;
 
@@ -31,7 +31,7 @@ public class AlumnoRequerimiento extends BaseEntity implements Serializable {
     @Column(name = "DNI") private String dni;
     @Column(name = "EDAD") private Integer edad;
     @Column(name = "GENERO") private String genero;
-    @Column(name = "NOMBRE") private Integer nombre;
+    @Column(name = "NOMBRE") private String nombre;
 
     @Temporal(TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS", locale = "es_PE", timezone = "America/Lima")
